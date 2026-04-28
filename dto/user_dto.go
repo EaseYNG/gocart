@@ -6,6 +6,7 @@ type UserCreate struct {
 	Username string `json:"username"`
 	Password string `json:"password"`
 	Nickname string `json:"nickname"`
+	Role     string `json:"role"`
 }
 
 type UserLogin struct {

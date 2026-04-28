@@ -20,7 +20,7 @@ type User struct {
 	Username string
 	Password string
 	Nickname string
-	Role     UserRole `gorm:"type:varchar(10);default:'active'"`
+	Role     UserRole `gorm:"type:varchar(10);default:'customer';"`
 }
 
 func (role *UserRole) Value() string {

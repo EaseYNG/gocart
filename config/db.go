@@ -12,7 +12,7 @@ import (
 var DB *gorm.DB
 
 func InitDB() {
-	password := "123456"
+	password := "20060221@yyx"
 	dsn := "root:" + password + "@tcp(127.0.0.1:3306)/gocart_db?charset=utf8mb4&parseTime=True&loc=Local"
 
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})

@@ -34,7 +34,7 @@ func FindById(id int) (*Item, error) {
 // FindByOwnerId 根据merchant_id获取商品列表
 func FindByOwnerId(id int) ([]*Item, error) {
 	var res []*Item
-	result := config.DB.Where("owner_id = ?", id).Find(res)
+	result := config.DB.Where("owner_id = ?", id).Find(&res)
 	if result.Error != nil {
 		return res, result.Error
 	}
@@ -50,5 +50,5 @@ func (item *Item) Remove() error {
 }
 
 func (item *Item) Update(temp *Item) error {
-	return config.DB.Model(&temp).Updates(temp).Error
+	return config.DB.Model(item).Updates(temp).Error
 }

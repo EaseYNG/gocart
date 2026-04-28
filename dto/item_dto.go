@@ -1,6 +1,8 @@
 package dto
 
-import "main/common"
+import (
+	"main/common"
+)
 
 type ItemDto struct {
 	Name        string  `json:"name"`

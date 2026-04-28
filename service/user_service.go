@@ -28,6 +28,7 @@ func CreateUser(uc dto.UserCreate) *common.BizError {
 		Username: uc.Username,
 		Password: hash,
 		Nickname: uc.Nickname,
+		Role:     model.Of(uc.Role),
 	}); db_err != nil {
 		// db错误
 		return common.InternalError
@@ -47,7 +48,7 @@ func LoginUser(ul dto.UserLogin) (string, *common.BizError) {
 		return "", common.New(400, "用户名或密码错误")
 	}
 
-	token, err := util.GenerateToken(user.ID, user.Username)
+	token, err := util.GenerateToken(user.ID, user.Role.Value())
 	if err != nil {
 		return "", common.InternalError
 	}

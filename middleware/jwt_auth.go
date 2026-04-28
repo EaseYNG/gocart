@@ -3,6 +3,7 @@ package middleware
 import (
 	"strings"
 
+	"log/slog"
 	"main/common"
 	"main/util"
 
@@ -31,7 +32,7 @@ func JWTAuth() gin.HandlerFunc {
 			c.Abort()
 			return
 		}
-
+		slog.Info("jwtAuth claims: ", claims)
 		c.Set("userID", claims.UserID)
 		c.Set("userRole", claims.UserRole)
 		c.Next()
