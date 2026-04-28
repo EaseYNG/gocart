@@ -6,12 +6,29 @@ import (
 	"gorm.io/gorm"
 )
 
+type UserRole string // 用户角色
+
+const (
+	Customer UserRole = "customer"
+	Merchant UserRole = "merchant"
+	Manager  UserRole = "manager"
+)
+
 // 用户结构体
 type User struct {
 	gorm.Model
 	Username string
 	Password string
 	Nickname string
+	Role     UserRole `gorm:"type:varchar(10);default:'active'"`
+}
+
+func (role *UserRole) Value() string {
+	return string(*role)
+}
+
+func Of(value string) UserRole {
+	return UserRole(value)
 }
 
 // CreateUser 创建用户并写入数据库

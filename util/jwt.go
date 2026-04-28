@@ -11,16 +11,16 @@ var jwtKey = []byte("gocart_secret_key_change_in_production")
 
 type Claims struct {
 	UserID   uint   `json:"user_id"`
-	Username string `json:"username"`
+	UserRole string `json:"user_role"`
 	jwt.RegisteredClaims
 }
 
 // GenerateToken 生成JWT
-func GenerateToken(userID uint, username string) (string, error) {
+func GenerateToken(userID uint, userRole string) (string, error) {
 	expirationTime := time.Now().Add(24 * time.Hour)
 	claims := &Claims{
 		UserID:   userID,
-		Username: username,
+		UserRole: userRole,
 		RegisteredClaims: jwt.RegisteredClaims{
 			ExpiresAt: jwt.NewNumericDate(expirationTime),
 			IssuedAt:  jwt.NewNumericDate(time.Now()),

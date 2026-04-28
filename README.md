@@ -23,11 +23,11 @@ gocart - 基于Gin+Redis+MySQL的高并发电商秒杀系统
 gocart/
 ├── main.go         # 入口、初始化路由、启动消费协程
 ├── model           # 商品、订单、用户结构体
-├── config          # MySQL、Redis配置
+├── config          # MySQL、Redis配置、Slog配置
 ├── router          # 路由分组
-├── controller      # 秒杀接口入口
+├── controller      # 用户、商品接口入口
 ├── service         # 秒杀业务逻辑（核心高并发逻辑全在这）
 ├── middleware      # 限流、跨域、鉴权中间件
-├── util            # Redis工具、加密、分布式锁工具
+├── util            # Redis工具、jwt加密、分布式锁工具
 ```
 

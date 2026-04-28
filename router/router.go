@@ -22,6 +22,7 @@ func Init() *gin.Engine {
 	auth.Use(middleware.JWTAuth())
 	{
 		auth.POST("/user/logout", controller.Logout)
+		auth.POST("/item/add", controller.AddItem)
 	}
 
 	return r
